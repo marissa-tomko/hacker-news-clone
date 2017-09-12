@@ -28,3 +28,9 @@ get '/posts/:id' do
   erb :'posts/show'
 end
 
+get '/users/:id/posts' do
+  @user = User.find(params[:id])
+
+  erb :'posts/user_posts'
+end
+

@@ -21,15 +21,3 @@ get '/users/:id' do
   p params
   erb :'/users/show'
 end
-
-get '/users/:id/posts' do
-  @user = User.find(params[:id])
-
-  erb :'users/posts'
-end
-
-get '/users/:id/comments' do
-  @user = User.find(params[:id])
-
-  erb :'users/comments'
-end

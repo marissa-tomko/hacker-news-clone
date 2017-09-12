@@ -1,5 +1,7 @@
-<a href="/users/<%=current_user.id%>">view <%= current_user.username %>'s profile</a>
-<a href="/posts">HOME</a>
+<% if logged_in? %>
+  <a href="/users/<%=current_user.id%>">view <%= current_user.username %>'s profile</a>
+  <a href="/posts">HOME</a>
+<% end %>
 
 <h3><%= @post.title %></h3><p>by <%= @post.user.username %></p><br>
 <%= @post.content %>

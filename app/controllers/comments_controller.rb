@@ -18,3 +18,9 @@ post '/posts/:id/comments' do
     erb :'comments/new'
   end
 end
+
+get '/users/:id/comments' do
+  @user = User.find(params[:id])
+
+  erb :'comments/user_comments'
+end
