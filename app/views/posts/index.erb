@@ -1,0 +1,16 @@
+<% if logged_in? %>
+  <a href="/users/<%=current_user.id%>">view <%= current_user.username %>'s profile</a>
+  <a href="/posts/new">NEW POST</a>
+<% end %>
+
+<h2>POST IDX</h2>
+
+<ul>
+  <% @posts.each do |post| %>
+    <a href="/posts/<%= post.id %>"><li><%= post.title %></li></a>
+    by <%= post.user.username %>
+    <% if logged_in? %>
+      | <a href="/posts/<%=post.id%>/comments/new">add comment</a>
+    <% end %>
+  <% end %>
+</ul>

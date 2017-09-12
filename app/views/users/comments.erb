@@ -1,0 +1,10 @@
+<a href="/posts">HOME</a><br>
+<a href="/users/<%=current_user.id%>">view <%= current_user.username %>'s profile</a>
+<div id="user-comments">
+  <h5>Your Comments</h5>
+  <ul>
+    <% current_user.comments.each do |comment| %>
+      <li><%= comment.content %></li>
+    <% end %>
+   </ul>
+</div>

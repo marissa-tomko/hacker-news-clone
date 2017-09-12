@@ -1,0 +1,12 @@
+<a href="/posts">HOME</a>
+<%= erb :_errors %>
+
+<h3><%= @user.username %>'s profile</h3><br>
+<a href="/users/<%=@user.id%>/posts">View Your Posts</a>
+<a href="/users/<%=@user.id%>/comments">View Your Comments</a>
+
+<div id="user-info">
+  <p>email: <%= @user.email %></p>
+</div>
+
+

@@ -1,0 +1,10 @@
+<%= erb :'_errors' %>
+<h3>ADD NEW POST</h3>
+
+<form action="/posts" method="POST">
+  <input type="text" name="post[title]" placeholder="title"><br>
+  <input type="text" name="post[content]" placeholder="content"><br>
+
+  <input type="submit" value="ADD POST">
+</form>
+
