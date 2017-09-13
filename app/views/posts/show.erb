@@ -6,6 +6,17 @@
 <h3><%= @post.title %></h3><p>by <%= @post.user.username %></p><br>
 <%= @post.content %>
 
+<form action="/posts/<%= @post.id %>/post_votes" method="POST">
+  <input type="submit" name='examaple' value="UPVOTE">
+  <input type="hidden" name="post_vote[value]" value="1">
+</form>
+  <%= @post.total_votes %>
+<form action="/posts/<%= @post.id %>/post_votes" method="POST">
+  <input type="hidden" name="post_vote[value]" value="-1">
+  <input type="submit" value="DOWNVOTE">
+</form>
+
+
 <ul>
   <% @post.comments.each do |comment| %>
     <li><%= comment.content %> - <%=comment.user.username%></li>
@@ -18,7 +29,7 @@
 <% if current_user == @post.user %>
   <p><a href="/posts/<%= @post.id %>/edit">Edit Post</a></p>
 
-  <form method="post" action="/posts/<%= @post.id %>">
+  <form action="/posts/<%= @post.id %>" method="POST" >
     <input type="hidden" name="_method" value="delete">
     <input type="submit" value="DELETE THIS POST">
   </form>
