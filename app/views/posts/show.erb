@@ -14,4 +14,14 @@
 
 <% if logged_in? %>
   <a href="/posts/<%=@post.id%>/comments/new">add comment</a>
- <% end %>
+
+<% if current_user == @post.user %>
+  <p><a href="/posts/<%= @post.id %>/edit">Edit Post</a></p>
+
+  <form method="post" action="/posts/<%= @post.id %>">
+    <input type="hidden" name="_method" value="delete">
+    <input type="submit" value="DELETE THIS POST">
+  </form>
+<% end %>
+
+<%end %>

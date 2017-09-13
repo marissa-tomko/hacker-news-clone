@@ -34,3 +34,27 @@ get '/users/:id/posts' do
   erb :'posts/user_posts'
 end
 
+get '/posts/:id/edit' do
+  @post = Post.find(params[:id])
+
+  erb :'posts/edit'
+
+end
+
+put '/posts/:id' do
+  @post = Post.find(params[:id])
+  @post.update(params[:post])
+
+  if @post.save
+    redirect "/posts/#{@post.id}"
+  else
+    @errors = @post.errors.full_messages
+  end
+end
+
+delete '/posts/:id' do
+  @post = Post.find(params[:id])
+  @post.destroy
+
+  redirect '/posts'
+end
