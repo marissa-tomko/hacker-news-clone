@@ -6,16 +6,21 @@
 <h3><%= @post.title %></h3><p>by <%= @post.user.username %></p><br>
 <%= @post.content %>
 
-<form action="/posts/<%= @post.id %>/post_votes" method="POST">
-  <input type="submit" name='examaple' value="UPVOTE">
-  <input type="hidden" name="post_vote[value]" value="1">
-</form>
-  <%= @post.total_votes %>
-<form action="/posts/<%= @post.id %>/post_votes" method="POST">
-  <input type="hidden" name="post_vote[value]" value="-1">
-  <input type="submit" value="DOWNVOTE">
-</form>
+<div id="vote-form">
+ <form class="vote-button" action="/posts/<%= @post.id %>/post_votes" method="POST">
+    <input type="hidden" name="post_vote[value]" value="1">
+    <input type="submit" value="UPVOTE">
+  </form>
 
+  <div id="total-votes">
+    <%= @post.total_votes %>
+  </div>
+
+  <form class="vote-button" action="/posts/<%= @post.id %>/post_votes" method="POST">
+    <input type="hidden" name="post_vote[value]" value="-1">
+    <input type="submit" value="DOWNVOTE">
+  </form>
+</div>
 
 <ul>
   <% @post.comments.each do |comment| %>
